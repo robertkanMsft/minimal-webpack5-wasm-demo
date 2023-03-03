@@ -11,11 +11,16 @@ module.exports = {
     asyncWebAssembly: true,
     syncWebAssembly: true
   },
+  devtool: "source-map",
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
     compress: true,
-    port: 9000
+    port: 9000, 
+    headers: {
+      'Content-Security-Policy' : [ `script-src 'self' 'report-sample' http://localhost:*;`
+      ],
+    }
   }
 }
